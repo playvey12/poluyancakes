@@ -23,7 +23,8 @@
 
 ## Демо
 
-👉 [Смотреть сайт](https://playvey12.github.io/poluyancakes/)
+👉 [Смотреть сайт](https://poluyancakes.by)
+
 
 ## Как запустить локально
 
