@@ -1,0 +1,4 @@
+<div class="filter-wrapper">
+    <button class="filter-button" [class.active]="isFilter" (click)="ChangeFilters(true)">Насадки</button>
+    <button class="filter-button" [class.active]="!isFilter" (click)="ChangeFilters(false)">Машины</button>
+</div>

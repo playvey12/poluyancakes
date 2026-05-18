@@ -1,0 +1,395 @@
+.footer {
+    background: #ffffff; /* Теплый светлый фон */
+    padding: 60px 0 30px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Декоративный элемент фона */
+.footer::before {
+    content: '✦';
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: 120px;
+    color: rgba(0, 0, 0, 0.02);
+    font-family: serif;
+    pointer-events: none;
+    transform: rotate(-15deg);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+}
+
+.footer-main {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Логотип */
+.logo {
+    font-family: 'Times New Roman', serif;
+    font-size: 28px;
+    font-weight: bold;
+    color: #000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.logo::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: #000;
+    transition: width 0.3s ease;
+}
+
+.footer-main:hover .logo::after {
+    width: 100%;
+}
+
+.logo .logo-inst {
+    font-size: 32px;
+    color: #000;
+    transition: all 0.3s ease;
+}
+
+.logo:hover .logo-inst {
+    transform: rotate(360deg) scale(1.2);
+    transition: transform 0.6s ease;
+}
+
+/* Группы информации */
+.footer-info-group {
+    position: relative;
+    padding-left: 15px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.footer-info-group:hover {
+    border-left-color: #000;
+    padding-left: 20px;
+}
+
+.footer-info-group h4 {
+    font-family: 'Times New Roman', serif;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-info-group p {
+    font-size: 15px;
+    color: #666;
+    margin: 0 0 5px 0;
+    line-height: 1.6;
+    transition: color 0.3s ease;
+}
+
+.footer-info-group:hover p {
+    color: #000;
+}
+
+.footer-info-group a {
+    color: #666;
+    text-decoration: none;
+    font-size: 15px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 2px;
+    transition: all 0.3s ease;
+}
+
+.footer-info-group a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #000;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.footer-info-group a:hover {
+    color: #000;
+}
+
+.footer-info-group a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Социальные ссылки */
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    color: #000;
+    font-size: 18px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Эффект заполнения при наведении */
+.social-links a::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: #000;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+    z-index: 0;
+}
+
+.social-links a:hover::before {
+    width: 100px;
+    height: 100px;
+}
+
+.social-links a i {
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    border-color: #000;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.social-links a:hover i {
+    color: #fff;
+    transform: scale(1.2);
+}
+
+/* Анимация для иконок социальных сетей */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.social-links a {
+    animation: bounce 3s ease infinite;
+    animation-play-state: paused;
+}
+
+.social-links a:hover {
+    animation-play-state: running;
+}
+
+/* Задержки для каждой иконки */
+.social-links a:nth-child(1) { animation-delay: 0s; }
+.social-links a:nth-child(2) { animation-delay: 0.2s; }
+
+/* Нижняя часть футера */
+.footer-bottom {
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    text-align: center;
+    color: #999;
+    font-size: 14px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease 0.3s forwards;
+}
+
+.footer-bottom p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.footer-bottom a {
+    color: #666;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-bottom a:hover {
+    color: #000;
+}
+
+/* Медиа-запросы */
+@media (min-width: 768px) {
+    .footer-main {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+    
+    .logo {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (min-width: 992px) {
+    .footer-main {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .logo {
+        grid-column: auto;
+    }
+}
+
+@media (max-width: 767px) {
+    .footer {
+        padding: 40px 0 20px;
+    }
+    
+    .logo {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    
+    .footer-info-group {
+        padding-left: 10px;
+    }
+    
+    .footer-info-group h4 {
+        font-size: 14px;
+    }
+    
+    .social-links {
+        justify-content: flex-start;
+    }
+    
+    .social-links a {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-main {
+        gap: 25px;
+    }
+    
+    .footer-info-group {
+        padding-left: 8px;
+    }
+    
+    .footer-info-group p,
+    .footer-info-group a {
+        font-size: 14px;
+    }
+}
+
+/* Анимация для всего футера при загрузке */
+.footer {
+    opacity: 0;
+    animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Эффект параллакса для декоративного элемента */
+.footer:hover::before {
+    animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(-15deg);
+    }
+    to {
+        transform: rotate(345deg);
+    }
+}
+
+/* Стили для активных ссылок */
+.social-links a:active {
+    transform: scale(0.9);
+}
+
+/* Доступность */
+.social-links a:focus-visible {
+    outline: 2px solid #000;
+    outline-offset: 2px;
+}
+
+/* Добавляем эффект пульсации для логотипа */
+@keyframes gentlePulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+.logo {
+    animation: gentlePulse 3s ease infinite;
+}
+
+/* Стили для разделителя */
+.footer-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
+    margin: 40px 0 20px;
+}

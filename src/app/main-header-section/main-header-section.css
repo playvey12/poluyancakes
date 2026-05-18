@@ -1,0 +1,555 @@
+/* Основные переменные */
+:root {
+    --primary-color: #000;
+    --secondary-color: #fff;
+    --text-color: #666;
+    --bg-light: #faf7f2;
+    --transition: all 0.3s ease;
+}
+
+/* Сброс отступов */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Hero секция */
+.hero {
+    margin-top: 50px;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    overflow: hidden;
+    padding: 100px 5%;
+}
+
+/* Фоновый декоративный элемент */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 0%, var(--bg-light) 100%);
+    clip-path: polygon(100% 0, 0 0, 100% 100%);
+    z-index: 1;
+}
+
+.hero::after {
+    content: '✦';
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    font-size: 200px;
+    color: rgba(0, 0, 0, 0.02);
+    font-family: serif;
+    transform: rotate(-15deg);
+    animation: float 8s ease-in-out infinite;
+    z-index: 0;
+}
+
+/* Контейнер */
+.hero-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 60px;
+    z-index: 3;
+}
+
+/* Контентная часть */
+.hero-content {
+    flex: 1;
+    max-width: 600px;
+}
+
+.hero-title {
+    font-family: 'Times New Roman', serif;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 25px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.brand-name {
+    font-weight: 700;
+    color: var(--primary-color);
+    position: relative;
+    display: inline-block;
+}
+
+.brand-name::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease;
+}
+
+.hero-title:hover .brand-name::after {
+    transform: scaleX(1);
+}
+
+.hero-description {
+    font-size: clamp(16px, 2vw, 20px);
+    line-height: 1.6;
+    color: var(--text-color);
+    margin-bottom: 40px;
+    max-width: 500px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease 0.2s forwards;
+}
+
+/* Кнопки */
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease 0.4s forwards;
+}
+
+.btn {
+    padding: 16px 40px;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: var(--transition);
+    border: none;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    border: 1px solid #000; /* Черная обводка */
+}
+
+.btn-primary {
+    background: #000 !important; /* Черный фон */
+    color: #fff !important; /* Белый текст */
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: #fff; /* Белый круг при ховере */
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+    z-index: -1;
+}
+
+.btn-primary:hover {
+    color: #000 !important; /* Черный текст при ховере */
+}
+
+.btn-primary:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-outline {
+    background: transparent !important; /* Прозрачный фон */
+    color: #000 !important; /* Черный текст */
+    border: 1px solid #000; /* Черная обводка */
+}
+
+.btn-outline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: #000; /* Черный фон при ховере */
+    transition: left 0.3s ease;
+    z-index: -1;
+}
+
+.btn-outline:hover {
+    color: #fff !important; /* Белый текст при ховере */
+}
+
+.btn-outline:hover::before {
+    left: 0;
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+.btn:focus-visible {
+    outline: 2px solid #000;
+    outline-offset: 2px;
+}
+/* Изображение */
+.hero-image-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 3;
+}
+
+.hero-img {
+    width: 100%;
+    max-width: 550px;
+    height: auto;
+    border-radius: 20px;
+    animation: fadeInUp 0.8s ease forwards;
+    transition: transform 0.5s ease;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+}
+
+.hero-img:hover {
+    transform: scale(1.02) translateY(-5px);
+}
+
+/* Декоративный круг */
+.hero-decor {
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 300px;
+    height: 300px;
+    border: 2px solid rgba(0, 0, 0, 0.05);
+    border-radius: 50%;
+    animation: rotate 20s linear infinite;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.hero-decor::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    border: 2px solid rgba(0, 0, 0, 0.03);
+    border-radius: 50%;
+}
+
+.hero-decor::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    background: rgba(0, 0, 0, 0.02);
+    border-radius: 50%;
+}
+
+/* Scroll indicator */
+.hero-scroll {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-color);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeIn 1s ease 1s forwards;
+    z-index: 5;
+}
+
+.hero-scroll:hover {
+    opacity: 1 !important;
+}
+
+.hero-scroll span {
+    display: block;
+    width: 1px;
+    height: 40px;
+    background: var(--text-color);
+    animation: scrollDown 2s ease infinite;
+}
+
+/* Анимации */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 0.5;
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(-15deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(-15deg);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: translateY(-50%) rotate(0deg);
+    }
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
+@keyframes scrollDown {
+    0% {
+        transform: scaleY(0.3);
+        transform-origin: top;
+    }
+    50% {
+        transform: scaleY(1);
+        transform-origin: top;
+    }
+    50.1% {
+        transform: scaleY(1);
+        transform-origin: bottom;
+    }
+    100% {
+        transform: scaleY(0.3);
+        transform-origin: bottom;
+    }
+}
+
+/* ========== АДАПТИВНОСТЬ ========== */
+
+/* Ноутбуки и небольшие десктопы */
+@media (max-width: 1200px) {
+    .hero {
+        padding: 80px 5%;
+    }
+    
+    .hero-container {
+        gap: 40px;
+    }
+    
+    .hero-img {
+        max-width: 450px;
+    }
+}
+
+/* Планшеты */
+@media (max-width: 992px) {
+    .hero {
+        min-height: auto;
+        padding: 60px 5%;
+    }
+    
+    .hero-container {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 40px;
+    }
+    
+    .hero-content {
+        max-width: 100%;
+    }
+    
+    .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+    }
+    
+    .hero::before {
+        width: 100%;
+        clip-path: polygon(0 0, 100% 0, 100% 40%, 0 60%);
+        opacity: 0.5;
+    }
+    
+    .hero::after {
+        font-size: 150px;
+        bottom: 30px;
+        left: 30px;
+    }
+    
+    .hero-decor {
+        display: none;
+    }
+    
+    .hero-img {
+        max-width: 400px;
+    }
+}
+
+/* Мобильные устройства */
+@media (max-width: 768px) {
+    .hero {
+        padding: 40px 20px;
+    }
+    
+    .hero-container {
+        gap: 30px;
+    }
+    
+    .hero-title {
+        margin-bottom: 20px;
+    }
+    
+    .hero-description {
+        margin-bottom: 30px;
+        font-size: 16px;
+    }
+    
+    .hero-buttons {
+        gap: 15px;
+    }
+    
+    .btn {
+        padding: 14px 30px;
+        font-size: 14px;
+    }
+    
+    .hero::after {
+        font-size: 100px;
+        bottom: 20px;
+        left: 20px;
+    }
+    
+    .hero-img {
+        max-width: 350px;
+    }
+    
+    .hero-scroll {
+        bottom: 20px;
+    }
+    
+    .hero-scroll span {
+        height: 30px;
+    }
+}
+
+/* Маленькие мобильные */
+@media (max-width: 480px) {
+    .hero {
+        padding: 30px 15px;
+    }
+    
+    .hero-container {
+        gap: 20px;
+    }
+    
+    .hero-title {
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+    
+    .hero-description {
+        font-size: 14px;
+        margin-bottom: 25px;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+    
+    .btn {
+        width: 100%;
+        padding: 12px 20px;
+        font-size: 13px;
+    }
+    
+    .hero::after {
+        font-size: 60px;
+        bottom: 15px;
+        left: 15px;
+    }
+    
+    .hero-img {
+        max-width: 280px;
+    }
+    
+    .brand-name::after {
+        height: 4px;
+        bottom: 3px;
+    }
+}
+
+/* Специфические правки для очень маленьких экранов */
+@media (max-width: 360px) {
+    .hero-title {
+        font-size: 24px;
+    }
+    
+    .hero-img {
+        max-width: 220px;
+    }
+    
+    .btn {
+        padding: 10px 16px;
+        font-size: 12px;
+    }
+}
+
+/* Ландшафтная ориентация на мобильных */
+@media (max-height: 600px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+        padding: 40px 20px;
+    }
+    
+    .hero-container {
+        flex-direction: row;
+        gap: 30px;
+    }
+    
+    .hero-img {
+        max-width: 250px;
+    }
+    
+    .hero-scroll {
+        display: none;
+    }
+}
+
+/* Hover эффекты только для устройств с поддержкой hover */
+@media (hover: hover) {
+    .hero:hover {
+        background: #fcfcfc;
+    }
+}
+
+

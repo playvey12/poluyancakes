@@ -1,0 +1,295 @@
+.products-header {
+    padding: 100px 0;
+     background: #ffff;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Декоративный фон */
+.products-header::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    left: -10%;
+    width: 500px;
+    height: 500px;
+    background: #ffff;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.products-header::after {
+    content: '✦';
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: 150px;
+    color: rgba(0, 0, 0, 0.02);
+    font-family: serif;
+    pointer-events: none;
+    transform: rotate(15deg);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Заголовок секции */
+.section-title {
+    font-family: 'Times New Roman', serif;
+    font-size: 48px;
+    color: #000;
+    margin: 0 0 15px 0;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 2px;
+    background: #000;
+    transition: width 0.3s ease;
+}
+
+.products-header:hover .section-title::after {
+    width: 120px;
+}
+
+.section-subtitle {
+    font-size: 18px;
+    color: #666;
+    text-align: center;
+    margin: 30px 0 50px;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.6s ease 0.2s forwards;
+}
+
+/* Стили для фильтров (если нужно переопределить) */
+app-product-filters {
+    display: block;
+    margin-bottom: 50px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.6s ease 0.4s forwards;
+}
+
+/* Сетка продуктов */
+.products-grid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+    justify-items: center;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.6s ease 0.6s forwards;
+}
+
+/* Анимация появления */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.products-grid app-product-item{
+    cursor: pointer;
+}
+/* Анимация для карточек при наведении на сетку */
+.products-grid:hover app-product-item:not(:hover) {
+    opacity: 0.7;
+    filter: grayscale(0.3);
+    transition: all 0.3s ease;
+}
+
+/* Стили для пустого состояния */
+.products-grid:empty::after {
+    content: 'Выберите категорию';
+    display: block;
+    text-align: center;
+    padding: 60px;
+    font-size: 18px;
+    color: #999;
+    font-style: italic;
+    grid-column: 1 / -1;
+}
+
+/* Медиа-запросы */
+@media (max-width: 768px) {
+    .products-header {
+        padding: 60px 0;
+    }
+    
+    .section-title {
+        font-size: 36px;
+    }
+    
+    .section-subtitle {
+        font-size: 16px;
+        margin: 25px 0 40px;
+        padding: 0 15px;
+    }
+    
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .products-header {
+        padding: 40px 0;
+    }
+    
+    .section-title {
+        font-size: 30px;
+    }
+    
+    .section-subtitle {
+        font-size: 15px;
+        margin: 20px 0 30px;
+    }
+    
+    .products-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+/* Анимация для фонового декора */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(15deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(15deg);
+    }
+}
+
+.products-header::after {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Эффект при скролле */
+.products-header {
+    scroll-margin-top: 80px; /* Отступ для плавного скролла до секции */
+}
+
+/* Дополнительные эффекты */
+.products-header {
+    transition: background 0.5s ease;
+}
+
+.products-header:hover {
+ background: #ffff;
+}
+
+/* Стили для счетчика товаров (если нужно) */
+.products-count {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 14px;
+    color: #999;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease 0.8s forwards;
+}
+
+.products-count span {
+    color: #000;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 0 5px;
+}
+
+/* Стили для кнопки загрузки (если есть пагинация) */
+.load-more {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease 1s forwards;
+}
+
+.load-more-btn {
+    padding: 15px 40px;
+    background: transparent;
+    border: 1px solid #000;
+    color: #000;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.load-more-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: #000;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+    z-index: -1;
+}
+
+.load-more-btn:hover {
+    color: #fff;
+}
+
+.load-more-btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Индикатор загрузки */
+.loading-spinner {
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #f0f0f0;
+    border-top: 2px solid #000;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

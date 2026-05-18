@@ -1,0 +1,43 @@
+.filter-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 40px 0; /* Отступы: сверху от текста, снизу до карточек */
+}
+
+.filter-button {
+  /* Базовые стили */
+  background-color: transparent;
+  color: #000;
+  border: 1px solid #e0e0e0;
+  
+  /* Форма и размеры */
+  padding: 10px 32px;
+  border-radius: 30px; /* Сильное скругление как на макете */
+  
+  /* Шрифты */
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}
+
+/* Состояние при наведении */
+.filter-button:hover {
+  border-color: #000;
+  background-color: #f9f9f9;
+}
+
+/* Активное состояние (выбранный фильтр) */
+.filter-button.active {
+  background-color: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+/* Убираем стандартную обводку при клике в некоторых браузерах */
+.filter-button:focus {
+  outline: none;
+}

@@ -1,0 +1,386 @@
+.contacts-section {
+    padding: 80px 20px;
+    background-color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+/* Декоративный фон */
+.contacts-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.02) 0%, rgba(0, 0, 0, 0) 70%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+/* Заголовок секции */
+.contacts-header {
+    margin-bottom: 60px;
+    text-align: left;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.label {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 10px;
+    display: block;
+    color: #000;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.title {
+    font-family: 'Times New Roman', serif;
+    font-size: 56px;
+    margin: 0 0 20px;
+    color: #000;
+    position: relative;
+    display: inline-block;
+}
+
+.title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 80px;
+    height: 2px;
+    background: #000;
+    transition: width 0.3s ease;
+}
+
+.contacts-header:hover .title::after {
+    width: 120px;
+}
+
+.subtitle {
+    font-size: 18px;
+    color: #555;
+}
+
+/* Основной контент */
+.contacts-content {
+    display: flex;
+    gap: 50px;
+    align-items: flex-start;
+}
+
+/* Блок с контактной информацией */
+.contacts-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.info-item {
+    display: flex;
+    gap: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateX(-30px);
+    animation: slideInLeft 0.6s ease forwards;
+    position: relative;
+    cursor: pointer;
+}
+
+.info-item:nth-child(1) { animation-delay: 0.2s; }
+.info-item:nth-child(2) { animation-delay: 0.4s; }
+.info-item:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes slideInLeft {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.info-item:hover {
+    background: rgba(0, 0, 0, 0.02);
+    transform: translateX(10px);
+}
+
+.info-item .icon {
+    width: 30px; /* Немного увеличил для анимации */
+    font-size: 24px;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 4px;
+    transition: all 0.3s ease;
+}
+
+.info-item:hover .icon {
+    transform: scale(1.2) rotate(5deg);
+    color: #000;
+}
+
+.details {
+    flex: 1;
+}
+
+.details h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-family: 'Times New Roman', serif;
+    font-size: 20px;
+    color: #000;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.info-item:hover .details h4 {
+    letter-spacing: 2px;
+}
+
+.details p {
+    color: #666;
+    margin-bottom: 5px;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.details a {
+    color: #000;
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 2px;
+    transition: color 0.3s ease;
+}
+
+.details a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #000;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.details a:hover {
+    color: #000;
+}
+
+.details a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.route-link {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #000;
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 2px;
+}
+
+.route-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #000;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.route-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Стили для Instagram */
+.logo-inst {
+    transition: all 0.3s ease;
+}
+
+.details .logo-inst {
+    font-size: 16px;
+    margin-right: 5px;
+    color: #000;
+}
+
+.info-item:hover .logo-inst {
+    transform: scale(1.2);
+}
+
+/* Карта/QR код */
+.map-container {
+    flex: 1;
+    opacity: 0;
+    transform: translateX(30px);
+    animation: slideInRight 0.6s ease 0.4s forwards;
+}
+
+@keyframes slideInRight {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.map-placeholder {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+
+
+.map-placeholder:hover::before {
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    border-color: #000;
+}
+
+.qrInst {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(1);
+    transition: all 0.5s ease;
+    display: block;
+}
+
+.map-placeholder:hover .qrInst {
+  
+    transform: scale(1.02);
+}
+
+/* Декоративная подпись */
+.map-caption {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+    color: #666;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.map-container:hover .map-caption {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Адаптивность */
+@media (max-width: 992px) {
+    .contacts-content {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .map-container {
+        width: 100%;
+        max-width: 450px;
+        margin: 0 auto;
+    }
+    
+    .title {
+        font-size: 48px;
+    }
+}
+
+@media (max-width: 768px) {
+    .contacts-section {
+        padding: 60px 20px;
+    }
+    
+    .title {
+        font-size: 42px;
+    }
+    
+    .contacts-header {
+        margin-bottom: 40px;
+    }
+    
+    .info-item {
+        gap: 15px;
+    }
+    
+    .details h4 {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 36px;
+    }
+    
+    .info-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .info-item .icon {
+        padding-top: 0;
+    }
+    
+    .qrInst {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+/* Дополнительные анимации */
+@keyframes subtlePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+
+
+/* Стили для фокуса (доступность) */
+.details a:focus-visible,
+.route-link:focus-visible {
+    outline: 2px solid #000;
+    outline-offset: 2px;
+}
+
+/* Эффект для всей секции при наведении */
+.contacts-section:hover .title::after {
+    width: 120px;
+}

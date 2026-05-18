@@ -1,0 +1,69 @@
+<div id="modalOverlay" class="modal-overlay" (click)="onClose()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <!-- Кнопка закрытия вынесена для удобства клика -->
+    <button class="close-button" (click)="onClose()" aria-label="Закрыть">&times;</button>
+    
+    <div class="product-container" *ngIf="product">
+      <!-- Секция визуала -->
+      <div class="product-visual">
+        <div class="sticky-image">
+          <img [src]="product.image" [alt]="product.title">
+          <div class="promo-badges">
+            <span class="badge warranty">{{ product.warranty }}</span>
+            <span class="badge installment">Рассрочка</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Секция контента -->
+      <div class="product-details">
+        <header class="details-header">
+           <h2 class="product-title">{{ product.title }}</h2>
+        
+        </header>
+
+        <div class="promo-box">
+          <p class="promo-text"><strong>Подарок:</strong> {{ product.bonus }}</p>
+          <div class="promo-code">Промокод: <span>{{ product.promo_code }}</span></div>
+        </div>
+
+        <section class="info-block">
+          <h3 class="section-title">Характеристики</h3>
+          <div class="specs-grid">
+            <div class="spec-item"><span>Объем:</span> <strong>{{ product.specs.bowl_capacity }}</strong></div>
+            <div class="spec-item"><span>Привод:</span> <strong>{{ product.specs.motor_power }}</strong></div>
+            <div class="spec-item"><span>Особенности:</span> <strong>{{ product.specs.temp_range }}</strong></div>
+          </div>
+        </section>
+
+        <section class="info-block">
+          <h3 class="section-title">О насадке</h3>
+          <p class="description">{{ product.description }}</p>
+        </section>
+
+        <section class="info-block">
+          <h3 class="section-title">Преимущества</h3>
+          <ul class="features-list">
+            <li *ngFor="let feature of product.features">{{ feature }}</li>
+          </ul>
+        </section>
+
+        <section class="info-block">
+          <h3 class="section-title">В комплекте</h3>
+          <div class="bundle-tags">
+            <span class="tag" *ngFor="let item of product.bundle">{{ item }}</span>
+          </div>
+        </section>
+
+        <div class="action-bar">
+        <a 
+    href="https://kenwood-shop.by?sm_promo=cG9sdXlhbl8wNzMyKjE" 
+    target="_blank" 
+    class="buy-button-link">
+    Купить на официальном сайте
+  </a> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

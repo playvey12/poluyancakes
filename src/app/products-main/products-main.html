@@ -1,0 +1,27 @@
+<section id="products-section" class="products-header">
+    <div class="container">
+ 
+        <h2 class="section-title">Кухонные машины</h2>
+        <p class="section-subtitle">
+            Откройте для себя инструменты профессионального качества
+        </p>
+
+        <app-product-filters (filter)="ChangeFilters($event)"></app-product-filters>
+
+        <div class="products-grid">
+            @for (item of products; track item.id) {
+               <app-product-item 
+                    [product]="item" 
+                    (click)="openModal(item)">
+                </app-product-item>
+            }
+        </div>
+    </div>
+       
+   @if (selectedProduct) {
+        <app-modalwindow 
+            [product]="selectedProduct" 
+            (close)="closeModal()">
+        </app-modalwindow>
+    }
+</section>
